@@ -13,11 +13,11 @@
 - Напишите bash-скрипт (pipeline.sh), последовательно запускающий все python-скрипты.
 
 ## Решение
-В скрипте [data_creation.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/data_creation.py) сгенерирован синтетический набор данных, описывающий изменение уровня воды в реке в течение календарного года.
-В скрипте [model_preprocessing.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/model_preprocessing.py) выполнена предварительная обработка данных с помощью ```sklearn.preprocessing.StandardScaler```.
-В скрипте [model_preparation.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/model_preparation.py) реализовано обучение модели с помощью ```RandomForestRegressor```.
-В скрипте [model_testing.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/model_testing.py) проверяется работа модели (MSE=0.0275). Дополнительно генерируется график на основе тренировочных данных c наложенной на него предсказательной моделью.
+- В скрипте [data_creation.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/data_creation.py) сгенерирован синтетический набор данных, описывающий изменение уровня воды в реке в течение календарного года.
+- В скрипте [model_preprocessing.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/model_preprocessing.py) выполнена предварительная обработка данных с помощью ```sklearn.preprocessing.StandardScaler```.
+- В скрипте [model_preparation.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/model_preparation.py) реализовано обучение модели с помощью ```RandomForestRegressor```.
+- В скрипте [model_testing.py](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/model_testing.py) проверяется работа модели (MSE=0.0275). Дополнительно генерируется график на основе тренировочных данных c наложенной на него предсказательной моделью.
 ![plot](https://github.com/DanilKhardi/mlops_urfu/blob/main/lab1/data/model/plot.png)
 
 
-При запуске bash-скрипта``pipiline.sh``` запускается обучение модели. Реализованные ранее Python-скрипты будут выполняться последовательно.
+При запуске bash-скрипта ```pipiline.sh``` запускается обучение модели. Реализованные ранее Python-скрипты будут выполняться последовательно.
