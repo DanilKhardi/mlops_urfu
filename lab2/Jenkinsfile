@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    stage('Setup Environment') {
+        steps {
+           sh '''
+               virtualenv .venv
+               source .venv/bin/activate
+               pip install -r requirements.txt
+               '''
+           }
+        }
+    stages {
+        stage('Generate data') {
+            steps {
+                echo 'Start generate data'
+                sh "python3 ./data_creation.py"
+                echo 'OK'
+            }
+        }
+        stage('Preprocess model') {
+            steps {
+                echo 'Start preprocessing model'
+                sh "python3 ./model_preprocessing.py"
+                echo 'OK'
+            }
+        }
+        stage('Preparation model') {
+            steps {
+                echo 'Start preparation model'
+                sh "python3 ./model_preparation.py"
+                echo 'OK'
+            }
+        }
+        stage('Test model') {
+            steps {
+                echo 'Start test model'
+                sh "python3 ./model_testing.py"
+                echo 'OK'
+            }
+        }
+    post {
+        always {
+            echo "OK: Pipeline build success"
+        }
+    }
+}
