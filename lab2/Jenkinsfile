@@ -8,6 +8,7 @@ pipeline {
                    virtualenv .venv
                    . .venv/bin/activate
                    pip install -r lab2/requirements.txt
+                   pip install numpy
                    echo 'OK'
                    '''
                }
