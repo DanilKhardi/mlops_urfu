@@ -7,6 +7,7 @@ pipeline {
                    #!/bin/bash
                    virtualenv .venv
                    . .venv/bin/activate
+                   pwd
                    chmod u+r requirements.txt
                    pip install -r requirements.txt
                    '''
