@@ -1,15 +1,15 @@
 pipeline {
     agent any
-    stage('Setup Environment') {
-        steps {
-           sh '''
-               virtualenv .venv
-               source .venv/bin/activate
-               pip install -r requirements.txt
-               '''
-           }
-        }
     stages {
+        stage('Setup Environment') {
+            steps {
+               sh '''
+                   virtualenv .venv
+                   source .venv/bin/activate
+                   pip install -r requirements.txt
+                   '''
+               }
+            }
         stage('Generate data') {
             steps {
                 echo 'Start generate data'
@@ -20,21 +20,21 @@ pipeline {
         stage('Preprocess model') {
             steps {
                 echo 'Start preprocessing model'
-                sh "python3 ./model_preprocessing.py"
+                sh "python3 ./data_preprocessing.py"
                 echo 'OK'
             }
         }
         stage('Preparation model') {
             steps {
                 echo 'Start preparation model'
-                sh "python3 ./model_preparation.py"
+                sh "python3 ./data_preparation.py"
                 echo 'OK'
             }
         }
         stage('Test model') {
             steps {
                 echo 'Start test model'
-                sh "python3 ./model_testing.py"
+                sh "python3 ./data_preparation.py"
                 echo 'OK'
             }
         }
