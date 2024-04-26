@@ -7,37 +7,36 @@ pipeline {
                    #!/bin/bash
                    virtualenv .venv
                    . .venv/bin/activate
-                   pwd
-                   ls -la
                    pip install -r lab2/requirements.txt
+                   echo 'OK'
                    '''
                }
             }
         stage('Generate data') {
             steps {
                 echo 'Start generate data'
-                sh "python3 ./data_creation.py"
+                sh "python3 lab2/data_creation.py"
                 echo 'OK'
             }
         }
         stage('Preprocess model') {
             steps {
                 echo 'Start preprocessing model'
-                sh "python3 ./data_preprocessing.py"
+                sh "python3 lab2/data_preprocessing.py"
                 echo 'OK'
             }
         }
         stage('Preparation model') {
             steps {
                 echo 'Start preparation model'
-                sh "python3 ./data_preparation.py"
+                sh "python3 lab2/data_preparation.py"
                 echo 'OK'
             }
         }
         stage('Test model') {
             steps {
                 echo 'Start test model'
-                sh "python3 ./data_preparation.py"
+                sh "python3 lab2/data_preparation.py"
                 echo 'OK'
             }
         }
