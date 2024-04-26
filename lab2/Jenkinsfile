@@ -9,8 +9,7 @@ pipeline {
                    . .venv/bin/activate
                    pwd
                    ls -la
-                   chmod u+r requirements.txt
-                   pip install -r requirements.txt
+                   pip install -r lab2/requirements.txt
                    '''
                }
             }
