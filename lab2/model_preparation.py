@@ -11,13 +11,13 @@ def read_data(path):
 
 
 def save_model(path, model):
-    os.makedirs("./data/model", exist_ok=True)
+    os.makedirs("lab2/data/model", exist_ok=True)
     joblib.dump(model, path)
 
 
 if __name__ == "__main__":
     # Загрузка предобработанных данных
-    data = read_data("./data/train/train_water_level_preprocessed.csv")
+    data = read_data("lab2/data/train/train_water_level_preprocessed.csv")
     x = data[["day"]]
     y = data["water_level"]
 
@@ -29,5 +29,5 @@ if __name__ == "__main__":
     model.fit(x_train, y_train)
 
     # Сохранение модели
-    joblib.dump(model, "./data/model/model.pkl")
-    save_model("./data/model/model.pkl", model)
+    joblib.dump(model, "lab2/data/model/model.pkl")
+    save_model("lab2/data/model/model.pkl", model)

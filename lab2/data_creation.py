@@ -37,9 +37,9 @@ if __name__ == "__main__":
     test_days, test_water_levels = generate_water_level_dataset(years=YEARS, noise_std=0.75)
 
     # Сохранение данных в csv-файлы
-    os.makedirs("./data/train", exist_ok=True)
-    os.makedirs("./data/test", exist_ok=True)
+    os.makedirs("lab2/data/train", exist_ok=True)
+    os.makedirs("lab2/data/test", exist_ok=True)
     pd.DataFrame({"day": train_days, "water_level": train_water_levels}). \
-        to_csv(os.path.join("./data/train", "train_water_level_dataset.csv"), index=False)
+        to_csv(os.path.join("lab2/data/train", "train_water_level_dataset.csv"), index=False)
     pd.DataFrame({"day": test_days, "water_level": test_water_levels}). \
-        to_csv(os.path.join("./data/test", "test_water_level_dataset.csv"), index=False)
+        to_csv(os.path.join("lab2/data/test", "test_water_level_dataset.csv"), index=False)

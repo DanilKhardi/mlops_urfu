@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     # Загрузка модели
-    model = joblib.load('./data/model/model.pkl')
+    model = joblib.load('lab2/data/model/model.pkl')
 
     # Загрузка тестовых данных
-    test_data = pd.read_csv('./data/test/test_water_level_preprocessed.csv')
+    test_data = pd.read_csv('lab2/data/test/test_water_level_preprocessed.csv')
     x_test, y_test = test_data[['day']], test_data['water_level']
 
     # Предсказание и оценка модели
@@ -31,5 +31,5 @@ if __name__ == "__main__":
     plt.legend()
 
     # Сохранить график
-    plt.savefig("./data/model/plot.png", dpi=360)
+    plt.savefig("lab2/data/model/plot.png", dpi=360)
     # plt.show()

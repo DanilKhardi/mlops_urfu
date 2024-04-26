@@ -17,8 +17,8 @@ def save_data(path, data):
 
 if __name__ == "__main__":
     # Загрузка данных
-    train_data = read_data('./data/train/train_water_level_dataset.csv')
-    test_data = read_data('./data/test/test_water_level_dataset.csv')
+    train_data = read_data('lab2/data/train/train_water_level_dataset.csv')
+    test_data = read_data('lab2/data/test/test_water_level_dataset.csv')
 
     # Предобработка данных
     scaler = StandardScaler()
@@ -26,5 +26,5 @@ if __name__ == "__main__":
     test_data = preprocessing(test_data, scaler)
 
     # Сохранение предобработанных данных
-    save_data('./data/train/train_water_level_preprocessed.csv', train_data)
-    save_data('./data/test/test_water_level_preprocessed.csv', test_data)
+    save_data('lab2/data/train/train_water_level_preprocessed.csv', train_data)
+    save_data('lab2/data/test/test_water_level_preprocessed.csv', test_data)
