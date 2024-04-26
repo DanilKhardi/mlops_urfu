@@ -15,8 +15,7 @@ pipeline {
         stage('Generate data') {
             steps {
                 echo 'Start generate data'
-                sh "pip install numpy"
-                sh "python3 lab2/data_creation.py"
+                sh "./.venv/bin/python3 lab2/data_creation.py"
                 echo 'OK'
             }
         }
