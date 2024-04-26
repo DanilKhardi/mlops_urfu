@@ -38,11 +38,6 @@ pipeline {
                 echo 'OK'
             }
         }
-    post {
-        always {
-            echo "OK: Pipeline build success"
-        }
-    }
 }
 }
 
