@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        VENV_PATH = "./.venv"
+        PYTHON_INTERPRETER = "${VENV_PATH}/bin/python3"
+    }
     stages {
         stage('Setup Environment') {
             steps {
@@ -15,28 +19,28 @@ pipeline {
         stage('Generate data') {
             steps {
                 echo 'Start generate data'
-                sh "./.venv/bin/python3 lab2/data_creation.py"
+                sh "${PYTHON_INTERPRETER} lab2/data_creation.py"
                 echo 'OK'
             }
         }
         stage('Preprocess model') {
             steps {
                 echo 'Start preprocessing model'
-                sh "python3 lab2/data_preprocessing.py"
+                sh "${PYTHON_INTERPRETER} lab2/model_preprocessing.py"
                 echo 'OK'
             }
         }
         stage('Preparation model') {
             steps {
                 echo 'Start preparation model'
-                sh "python3 lab2/data_preparation.py"
+                sh "${PYTHON_INTERPRETER} lab2/model_preparation.py"
                 echo 'OK'
             }
         }
         stage('Test model') {
             steps {
                 echo 'Start test model'
-                sh "python3 lab2/data_preparation.py"
+                sh "${PYTHON_INTERPRETER} lab2/model_testing.py"
                 echo 'OK'
             }
         }
