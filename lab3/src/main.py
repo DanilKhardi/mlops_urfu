@@ -1,4 +1,3 @@
-from fastapi import FastAPI
 from pydantic import BaseModel
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -9,7 +8,7 @@ import pandas as pd
 import pickle
 import os
 import joblib
-
+from fastapi import FastAPI
 
 # Маппинг индекса и названия класса ириса
 IRIS_MAP = {"0": 'setosa', "1": 'versicolor', "2": 'virginica'}
@@ -23,9 +22,10 @@ class IrisParams(BaseModel):
 
 
 def fit_model():
-    if "iris_model.pkl" in os.listdir(os.path.join(os.getcwd(), "lab3/data")):
+    work_dir = os.path.abspath(os.curdir) # Выводит текущий рабочий каталог
+    if "iris_model.pkl" in os.listdir(os.path.join(work_dir, "data")):
         # Загружаем модель из файла
-        model, scaler = joblib.load("lab3/data/iris_model.pkl")
+        model, scaler = joblib.load("data/iris_model.pkl")
         return model, scaler
     else:
         # Обучаем модель
@@ -37,7 +37,7 @@ def fit_model():
         # Сохранение в CSV
         iris_df = pd.DataFrame(X, columns=iris.feature_names)
         iris_df['target'] = y
-        iris_df.to_csv('lab3/data/iris_dataset.csv', index=False)
+        iris_df.to_csv('data/iris_dataset.csv', index=False)
 
         # Разделение данных на обучающую и тестовую выборки
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -52,7 +52,7 @@ def fit_model():
         model.fit(X_train_scaled, y_train)
 
         # Записываем модель в файл
-        with open('lab3/data/iris_model.pkl', 'wb') as file:
+        with open('data/iris_model.pkl', 'wb') as file:
             pickle.dump((model, scaler), file)
 
         return model, scaler
@@ -65,7 +65,15 @@ model, scaler = fit_model()
 
 @app.get("/")
 async def root():
-    return {"message": str(type(model))}
+    return {
+        "message": "Iris classification model. Send POST request to /predict/",
+        "body": {
+            "sepal_length": 1.0,
+            "sepal_width": 4.0,
+            "petal_length": 1.0,
+            "petal_width": 3.0,
+        }
+    }
 
 
 @app.post("/predict/")
