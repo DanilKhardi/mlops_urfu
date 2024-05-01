@@ -10,6 +10,7 @@ import os
 import joblib
 from fastapi import FastAPI
 
+
 # Маппинг индекса и названия класса ириса
 IRIS_MAP = {"0": 'setosa', "1": 'versicolor', "2": 'virginica'}
 
@@ -68,10 +69,10 @@ async def root():
     return {
         "message": "Iris classification model. Send POST request to /predict/",
         "body": {
-            "sepal_length": 1.0,
-            "sepal_width": 4.0,
-            "petal_length": 1.0,
-            "petal_width": 3.0,
+            "sepal_length": 1.1,
+            "sepal_width": 4.2,
+            "petal_length": 1.3,
+            "petal_width": 3.4,
         }
     }
 
